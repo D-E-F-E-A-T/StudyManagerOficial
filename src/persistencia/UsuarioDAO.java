@@ -10,11 +10,12 @@ package persistencia;
  * @author lucas
  */
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
 
 
 import modelo.Usuario;
@@ -30,16 +31,18 @@ public class UsuarioDAO {
 	public boolean insertUsuario(Usuario u) {
 		try {
 			// CONECTA
+                        System.out.println("tentando conectar");
 			con.conecta();
 			PreparedStatement preparaInstrucao;
+                        System.out.println("linha 37");
 			preparaInstrucao = con.getConexao().prepareStatement(INSERTUSUARIO);
-
+                        System.out.println("linha 39");
 			// SETA OS VALORES DA INSTRUCAO
 			// OBS: PASSA OS PARAMETROS NA ORDEM DAS ? DA INSTRUCAO
 			preparaInstrucao.setString(1, u.getNomeUsuario().toUpperCase());
-			preparaInstrucao.setString(3, u.getEmailUsuario().toUpperCase());
-                        preparaInstrucao.setString(2, u.getUniversidadeUsuario());
-                        preparaInstrucao.setString(2, u.getSenhaUsuario());
+			preparaInstrucao.setString(2, u.getEmailUsuario().toUpperCase());
+                        preparaInstrucao.setString(3, u.getUniversidadeUsuario().toUpperCase());
+                        preparaInstrucao.setString(4, u.getSenhaUsuario().toUpperCase());
 			// EXECUTA A INSTRUCAO
 			preparaInstrucao.execute();
 
@@ -49,6 +52,7 @@ public class UsuarioDAO {
 			return true;
 
 		} catch (SQLException e) {
+                    System.out.println("nao conseguiu conectar");
 			return false;
 
 		}
@@ -131,7 +135,7 @@ public class UsuarioDAO {
                      System.out.println(e.getMessage());
 		}
                 
-		
+	       
 		return lista;
 	}
 

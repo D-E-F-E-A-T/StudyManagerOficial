@@ -7,14 +7,14 @@ package persistencia;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+import java.sql.*;
 /**
  *
  * @author lucas
  */
 public class Conexao {
-    private static final String USUARIO = "adimin";
-    private static final String SENHA = " ";
+    private static final String USUARIO = "admin";
+    private static final String SENHA = "";
     private static final String CAMINHO = "jdbc:h2:~/GerendiaroDeEstudos";
     private static final String DRIVER = "org.h2.Driver";
     private Connection conexao;
@@ -25,8 +25,10 @@ public class Conexao {
     
     public void conecta(){
      try{   
+        System.out.println("CONECTOU");
         Class.forName(DRIVER);
         conexao = DriverManager.getConnection(CAMINHO,USUARIO,SENHA);
+         
         }
      catch(ClassNotFoundException | SQLException e){
          System.err.println(e);
