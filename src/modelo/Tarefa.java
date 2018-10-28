@@ -1,5 +1,8 @@
 package modelo;
 
+import java.util.Objects;
+import java.util.logging.Logger;
+
 public class Tarefa {
     private String nomeTarefa;
     private String assuntoTarefa;
@@ -8,6 +11,20 @@ public class Tarefa {
     private int notaTarefa;
     private String anotacoesTarefa;
     private String tipoTarefa;
+    private int idTarefa;
+
+    public Tarefa(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getIdTarefa() {
+        return idTarefa;
+    }
+
+    public void setIdTarefa(int idTarefa) {
+        this.idTarefa = idTarefa;
+    }
+   
 
     public Tarefa(String nomeTarefa, String assuntoTarefa, String descricaoTarefa, int dataEntregaTarefa, int notaTarefa, String anotacoesTarefa, String tipoTarefa) {
         this.nomeTarefa = nomeTarefa;
@@ -81,6 +98,41 @@ public class Tarefa {
     public void setTipoTarefa(String tipoTarefa) {
         this.tipoTarefa = tipoTarefa;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.nomeTarefa);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Tarefa other = (Tarefa) obj;
+        if (!Objects.equals(this.nomeTarefa, other.nomeTarefa)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Tarefa{" + "nomeTarefa=" + nomeTarefa + '}';
+    }
+
+    public int compareTo(String anotherString) {
+        return nomeTarefa.compareTo(anotherString);
+    }
+    
     
     
 }

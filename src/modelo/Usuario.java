@@ -5,13 +5,15 @@ public class Usuario {
     private String nomeUsuario;
     private String universidadeUsuario;
     private String emailUsuario;
-
-    public Usuario(String nomeUsuario, String universidadeUsuario, String emailUsuario) {
+    private String senhaUsuario;
+    
+    public Usuario(String nomeUsuario, String universidadeUsuario, String emailUsuario,String senhaUsuario) {
         this.nomeUsuario = nomeUsuario;
         this.universidadeUsuario = universidadeUsuario;
         this.emailUsuario = emailUsuario;
+        this.senhaUsuario= senhaUsuario;
     }
-
+    
     public Usuario(int idUsuario, String nomeUsuario, String universidadeUsuario, String emailUsuario) {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;
@@ -25,7 +27,39 @@ public class Usuario {
 
     public Usuario() {
     }
+    
+    public String getSenhaUsuario() {
+        return senhaUsuario;
+    }
 
+    public void setSenhaUsuario(String senhaUsuario) {
+        this.senhaUsuario = senhaUsuario;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 11 * hash + this.idUsuario;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (this.idUsuario != other.idUsuario) {
+            return false;
+        }
+        return true;
+    }
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -61,6 +95,10 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario{" + "nomeUsuario=" + nomeUsuario + '}';
+    }
+
+    public int compareTo(Usuario u) {
+        return this.getNomeUsuario().compareTo(u.getNomeUsuario());
     }
     
     
