@@ -10,7 +10,6 @@ public class Exames {
     private int horaExame;
     private int duracaoExame;
     private int notasExame;
-    private int mediaExame;
 
     public Exames(String disciplinaExame, String nomeExame, String anotacoesExame, String salaExame, String descricaoExame, int dateExame, int horaExame, int duracaoExame, int notasExame, int mediaExame) {
         this.disciplinaExame = disciplinaExame;
@@ -22,7 +21,6 @@ public class Exames {
         this.horaExame = horaExame;
         this.duracaoExame = duracaoExame;
         this.notasExame = notasExame;
-        this.mediaExame = mediaExame;
     }
 
     public Exames(String disciplinaExame, String nomeExame, String anotacoesExame, String salaExame, int dateExame, int horaExame, int notasExame, int mediaExame) {
@@ -33,14 +31,12 @@ public class Exames {
         this.dateExame = dateExame;
         this.horaExame = horaExame;
         this.notasExame = notasExame;
-        this.mediaExame = mediaExame;
     }
 
     public Exames(String disciplinaExame, String nomeExame, int notasExame, int mediaExame) {
         this.disciplinaExame = disciplinaExame;
         this.nomeExame = nomeExame;
         this.notasExame = notasExame;
-        this.mediaExame = mediaExame;
     }
 
     public String getDisciplinaExame() {
@@ -115,13 +111,6 @@ public class Exames {
         this.notasExame = notasExame;
     }
 
-    public int getMediaExame() {
-        return mediaExame;
-    }
-
-    public void setMediaExame(int mediaExame) {
-        this.mediaExame = mediaExame;
-    }
     
     
 }
