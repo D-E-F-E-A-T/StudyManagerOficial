@@ -35,18 +35,7 @@
    <left>
       <VBox prefHeight="258.0" prefWidth="198.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="btMeuDia" contentDisplay="RIGHT" onAction="#meudia" prefHeight="49.0" prefWidth="206.0" text="Meu Dia" textFill="WHITE">
-               <font>
-                  <Font name="Century Gothic" size="12.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="54.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/study.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="btCalendario" contentDisplay="RIGHT" onAction="#calendarios" prefHeight="49.0" prefWidth="198.0" text="Calendario" textFill="WHITE">
+            <JFXButton fx:id="btCalendario" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" graphicTextGap="40.0" onAction="#calendarios" prefHeight="49.0" prefWidth="198.0" text="Calendario" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
@@ -57,7 +46,7 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton fx:id="btDisciplinas" contentDisplay="RIGHT" onAction="#disciplinas" prefHeight="49.0" prefWidth="198.0" text="Disciplinas" textFill="WHITE">
+            <JFXButton fx:id="btDisciplinas" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" graphicTextGap="50.0" onAction="#disciplinas" prefHeight="49.0" prefWidth="198.0" text="Disciplinas" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
@@ -68,7 +57,7 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton fx:id="btTarefas" contentDisplay="RIGHT" onAction="#tarefas" prefHeight="49.0" prefWidth="198.0" text="Tarefas" textFill="WHITE">
+            <JFXButton fx:id="btTarefas" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" graphicTextGap="50.0" onAction="#tarefas" prefHeight="49.0" prefWidth="198.0" text="Tarefas" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
@@ -79,18 +68,18 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton fx:id="btPlanoDeEstudos" contentDisplay="RIGHT" onAction="#planodeestudos" prefHeight="49.0" prefWidth="198.0" text="Plano de Estudos" textFill="WHITE">
+            <JFXButton fx:id="btPlanoDeEstudos" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" graphicTextGap="40.0" onAction="#planodeestudos" prefHeight="49.0" prefWidth="198.0" text="Plano de Estudos" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="41.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="41.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/calendar-plano.png" />
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton fx:id="btExames" contentDisplay="RIGHT" onAction="#exames" prefHeight="49.0" prefWidth="198.0" text="Exames" textFill="WHITE">
+            <JFXButton fx:id="btExames" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" graphicTextGap="50.0" onAction="#exames" prefHeight="49.0" prefWidth="198.0" text="Exames" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
@@ -101,29 +90,7 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton fx:id="btPesquisar" contentDisplay="RIGHT" onAction="#pesquisar" prefHeight="49.0" prefWidth="198.0" text="Pesquisar" textFill="WHITE">
-               <font>
-                  <Font name="Century Gothic" size="12.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="41.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/magnifier.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="btConfiguracoes" contentDisplay="RIGHT" onAction="#configuracoes" prefHeight="49.0" prefWidth="198.0" text="Configurações" textFill="WHITE">
-               <font>
-                  <Font name="Century Gothic" size="12.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="41.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/settings.png" />
-                     </image>
-                  </ImageView>
-               </graphic></JFXButton>
-            <JFXButton fx:id="btSair" contentDisplay="RIGHT" onAction="#sair" prefHeight="49.0" prefWidth="198.0" text="Sair" textFill="WHITE">
+            <JFXButton fx:id="btSair" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" graphicTextGap="50.0" onAction="#sair" prefHeight="49.0" prefWidth="198.0" text="Sair" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
@@ -138,6 +105,6 @@
       </VBox>
    </left>
    <center>
-      <Pane fx:id="paneInicial" prefHeight="490.0" prefWidth="602.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER" />
+      <Pane fx:id="paneInicial" prefHeight="490.0" prefWidth="602.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

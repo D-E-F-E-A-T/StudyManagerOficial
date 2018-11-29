@@ -16,7 +16,7 @@ public class LUCAO {
     
     public static void main(String[] args) {
    
-        Usuario u = new Usuario("lucas","universidadeMonstro","lucas@hotmail.com","senha");
+        Usuario u = new Usuario("Ayrton","universidadeBOLSONARO","ayrton123@hotmail.com","bolsominion");
         UsuarioDAO ur = new UsuarioDAO();
         if(ur.insertUsuario(u)){
             System.out.println("salvou");

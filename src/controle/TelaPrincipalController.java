@@ -26,7 +26,6 @@ import javafx.scene.layout.Pane;
 public class TelaPrincipalController implements Initializable {
     @FXML private BorderPane borderPrincipal;
     @FXML private Label labelPrincipal;
-    @FXML private JFXButton btMeuDia;
     @FXML private JFXButton btCalendario;
     @FXML private JFXButton btDisciplinas;
     @FXML private JFXButton btTarefas;
@@ -45,20 +44,7 @@ public class TelaPrincipalController implements Initializable {
         // TODO
        
     }
-    
-    @FXML private void meudia(){
-        System.out.println("teste");
-        try {
-            URL url = getClass().getResource("/visao/TelaMeuDia.fxml");
-            Parent TelaMeuDia = FXMLLoader.load(url);
-            borderPrincipal.setCenter(TelaMeuDia);
-            labelPrincipal.setText("Meu Dia");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            //Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
+
     @FXML private void calendarios(){
         System.out.println("teste");
         try {

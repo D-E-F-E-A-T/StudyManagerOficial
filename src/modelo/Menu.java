@@ -1,26 +1,14 @@
 package modelo;
 
 public class Menu {
-    private MeuDia menuMeuDia;
     private Disciplina menuDisciplina;
     private Tarefa menuTarefa;
     private Exames menuExame;
-    private Pesquisa menuPesquisa;
 
-    public Menu(MeuDia menuMeuDia, Disciplina menuDisciplina, Tarefa menuTarefa, Exames menuExame, Pesquisa menuPesquisa) {
-        this.menuMeuDia = menuMeuDia;
+    public Menu(Disciplina menuDisciplina, Tarefa menuTarefa, Exames menuExame) {
         this.menuDisciplina = menuDisciplina;
         this.menuTarefa = menuTarefa;
         this.menuExame = menuExame;
-        this.menuPesquisa = menuPesquisa;
-    }
-
-    public MeuDia getMenuMeuDia() {
-        return menuMeuDia;
-    }
-
-    public void setMenuMeuDia(MeuDia menuMeuDia) {
-        this.menuMeuDia = menuMeuDia;
     }
 
     public Disciplina getMenuDisciplina() {
@@ -45,15 +33,5 @@ public class Menu {
 
     public void setMenuExame(Exames menuExame) {
         this.menuExame = menuExame;
-    }
-
-    public Pesquisa getMenuPesquisa() {
-        return menuPesquisa;
-    }
-
-    public void setMenuPesquisa(Pesquisa menuPesquisa) {
-        this.menuPesquisa = menuPesquisa;
-    }
-    
-    
+    }  
 }
