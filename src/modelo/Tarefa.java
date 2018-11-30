@@ -1,108 +1,58 @@
 package modelo;
 
+import java.util.Date;
 import java.util.Objects;
-import java.util.logging.Logger;
+
 
 public class Tarefa {
-    private String nomeTarefa;
-    private String assuntoTarefa;
-    private String descricaoTarefa;
-    private int dataEntregaTarefa;
-    private int notaTarefa;
-    private String anotacoesTarefa;
-    private String tipoTarefa;
-    private int idTarefa;
+   private String nome;
+   private String assunto;
+   private Disciplina disciplina;
+   private Date data;
 
-    public Tarefa(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Tarefa(String nome, String assunto, Disciplina disciplina, Date data) {
+        this.nome = nome;
+        this.assunto = assunto;
+        this.disciplina = disciplina;
+        this.data = data;
     }
 
-    public int getIdTarefa() {
-        return idTarefa;
+    public String getNome() {
+        return nome;
     }
 
-    public void setIdTarefa(int idTarefa) {
-        this.idTarefa = idTarefa;
-    }
-   
-
-    public Tarefa(String nomeTarefa, String assuntoTarefa, String descricaoTarefa, int dataEntregaTarefa, int notaTarefa, String anotacoesTarefa, String tipoTarefa) {
-        this.nomeTarefa = nomeTarefa;
-        this.assuntoTarefa = assuntoTarefa;
-        this.descricaoTarefa = descricaoTarefa;
-        this.dataEntregaTarefa = dataEntregaTarefa;
-        this.notaTarefa = notaTarefa;
-        this.anotacoesTarefa = anotacoesTarefa;
-        this.tipoTarefa = tipoTarefa;
+    public String getAssunto() {
+        return assunto;
     }
 
-    public Tarefa(String nomeTarefa, String assuntoTarefa, String anotacoesTarefa, String tipoTarefa) {
-        this.nomeTarefa = nomeTarefa;
-        this.assuntoTarefa = assuntoTarefa;
-        this.anotacoesTarefa = anotacoesTarefa;
-        this.tipoTarefa = tipoTarefa;
+    public Disciplina getDisciplina() {
+        return disciplina;
     }
 
-    public String getNomeTarefa() {
-        return nomeTarefa;
+    public Date getData() {
+        return data;
     }
 
-    public void setNomeTarefa(String nomeTarefa) {
-        this.nomeTarefa = nomeTarefa;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getAssuntoTarefa() {
-        return assuntoTarefa;
+    public void setAssunto(String assunto) {
+        this.assunto = assunto;
     }
 
-    public void setAssuntoTarefa(String assuntoTarefa) {
-        this.assuntoTarefa = assuntoTarefa;
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
     }
 
-    public String getDescricaoTarefa() {
-        return descricaoTarefa;
-    }
-
-    public void setDescricaoTarefa(String descricaoTarefa) {
-        this.descricaoTarefa = descricaoTarefa;
-    }
-
-    public int getDataEntregaTarefa() {
-        return dataEntregaTarefa;
-    }
-
-    public void setDataEntregaTarefa(int dataEntregaTarefa) {
-        this.dataEntregaTarefa = dataEntregaTarefa;
-    }
-
-    public int getNotaTarefa() {
-        return notaTarefa;
-    }
-
-    public void setNotaTarefa(int notaTarefa) {
-        this.notaTarefa = notaTarefa;
-    }
-
-    public String getAnotacoesTarefa() {
-        return anotacoesTarefa;
-    }
-
-    public void setAnotacoesTarefa(String anotacoesTarefa) {
-        this.anotacoesTarefa = anotacoesTarefa;
-    }
-
-    public String getTipoTarefa() {
-        return tipoTarefa;
-    }
-
-    public void setTipoTarefa(String tipoTarefa) {
-        this.tipoTarefa = tipoTarefa;
+    public void setData(Date data) {
+        this.data = data;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 17 * hash + Objects.hashCode(this.nomeTarefa);
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -118,7 +68,7 @@ public class Tarefa {
             return false;
         }
         final Tarefa other = (Tarefa) obj;
-        if (!Objects.equals(this.nomeTarefa, other.nomeTarefa)) {
+        if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
         return true;
@@ -126,13 +76,9 @@ public class Tarefa {
 
     @Override
     public String toString() {
-        return "Tarefa{" + "nomeTarefa=" + nomeTarefa + '}';
+        return "Tarefa{" + "nome=" + nome + '}';
     }
-
-    public int compareTo(String anotherString) {
-        return nomeTarefa.compareTo(anotherString);
-    }
-    
+   
     
     
 }

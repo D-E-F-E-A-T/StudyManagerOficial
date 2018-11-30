@@ -4,134 +4,121 @@
  * and open the template in the editor.
  */
 package persistencia;
-
-/**
- *
- * @author lucas
- */
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
-
 import modelo.Disciplina;
 
+/**
+ *
+ * @author Ayrton Barreto
+ */
 public class DisciplinaDAO {
-	private final Conexao con = new Conexao();
-	
-	private final String INSERTDISCIPLINA = "INSERT INTO DISCIPLINA(NOME_DISCIPLINA,ID_DISCIPLINA,ASSUNTO_DISCIPLINA) VALUES (?,?,?)";
-	private final String UPDATEDISCIPLINA = "UPDATE DISCIPLIA SET NOME_DISCIPLINA = ? WHERE NOME_DISCIPLINA = ?";
-	private final String DELETEDISCIPLINA = "DELETE FROM DISCIPLINA WHERE NOME_DISCIPLINA= ?";
-	private final String LISTDISCIPLINA = "SELECT * FROM DISCIPLINA";
-        private final String BUSCARDISCIPLINA = "SELECT * FROM DISCIPLINA WHERE UPPER(NOME_DISCIPLINA) LIKE ?";
-	
+    private Conexao con = new Conexao();
+     
+    private final String INSERTDISCIPLINA = "INSERT INTO DISCIPLINA (NOME_DISCIPLINA,CONTEUDO_DISCIPLINA, ANOTACOES_DISCIPLINA) VALUES (?,?,?)";
+    private final String UPDATEDISCIPLINA = "UPDATE DISCIPLINA SET NOME_DISCIPLINA = ?, CONTEUDO_DISCIPLINA = ?, ANOTACOES_DISCIPLINA = ? WHERE ID_DISCIPLINA = ?";
+    private final String DELETEDISCIPLINA = "DELETE FROM DISCIPLINA WHERE ID_DISCIPLINA = ?";
+    private final String LISTDISCIPLINA = "SELECT * FROM DISCIPLINA ORDER BY ID_DISCIPLINA";
+   
+    
+    public boolean insertDisciplina(Disciplina d) throws SQLException{
+        System.out.println("ESTOU ACESSANDO O BANCO");
+        con.conecta();
+        
+        try{
+            
+         
+        PreparedStatement preparaInstrucao;
+        preparaInstrucao = con.getConexao().prepareStatement(INSERTDISCIPLINA);
+        System.out.println("ESTOU AQUI DEPOIS DA CONEXAO");
+      
+        System.out.println("ESTOU ACESSANDO AS CLASSES");
+        preparaInstrucao.setString(1, d.getNome().toUpperCase());
+        preparaInstrucao.setString(2, d.getConteudo().toUpperCase());
+        preparaInstrucao.setString(3, d.getAnotacoes().toUpperCase());
+        System.out.println("ESTOU ACESSEI AS CLASSES");
+        preparaInstrucao.execute();
+        con.desconecta();
+        
+        System.out.println("DESCONECTEI");
+                   
+        return true;    
+       }catch (SQLException e) {
+           System.err.println(e);
+        return false;    
+        }
+    }
+    
+     public boolean upadateDisciplina(Disciplina d) throws SQLException{
+        
+        PreparedStatement preparaInstrucao;
+        preparaInstrucao = con.getConexao().prepareStatement(UPDATEDISCIPLINA);
 
-	public boolean insertTitulo(Disciplina t) {
-		try {
-			// CONECTA
-			con.conecta();
-			PreparedStatement preparaInstrucao;
-			preparaInstrucao = con.getConexao().prepareStatement(INSERTDISCIPLINA);
+        try{
+            preparaInstrucao.setString(1, d.getNome().toUpperCase());
+            preparaInstrucao.setString(2, d.getConteudo().toUpperCase());
+            preparaInstrucao.setString(3, d.getAnotacoes().toUpperCase());
+            preparaInstrucao.setInt(4, d.getId_disciplina());
 
-			// SETA OS VALORES DA INSTRUCAO
-			// OBS: PASSA OS PARAMETROS NA ORDEM DAS ? DA INSTRUCAO
-			preparaInstrucao.setString(1, t.getNomeDisciplina().toUpperCase());
-			preparaInstrucao.setString(2, t.getAssuntoDisciplina().toUpperCase());
+            preparaInstrucao.execute();
+            con.desconecta();
+
+        return true;    
+       }catch (SQLException e) {
+           System.err.println(e);
+        return false;    
+        }
+    }
+     
+     public boolean deleteDisciplina(int id) throws SQLException{
+        
+        con.conecta();
+	PreparedStatement preparaInstrucao;
+        preparaInstrucao = con.getConexao().prepareStatement(DELETEDISCIPLINA);
+
+        try{
+            preparaInstrucao.setInt(1, id);
+            preparaInstrucao.execute();
+            con.desconecta();		
+            return true;
+	} catch (SQLException e) {
+                System.err.println(e);
+                return false;
+        } 
+    }
+    
+    public ArrayList<Disciplina> listDisciplina(){
+      
+      ArrayList<Disciplina> lista = new ArrayList<>(); 
+
+	try {
 			
-
-			// EXECUTA A INSTRUCAO
-			preparaInstrucao.execute();
-
-			// DESCONECTA
-			con.desconecta();
+            con.conecta();
+            PreparedStatement preparaInstrucao;
+            preparaInstrucao = con.getConexao().prepareStatement(LISTDISCIPLINA); 
 			
-			return true;
-
-		} catch (SQLException e) {
-			return false;
-
-		}
-	}
-	
-	public boolean updateTitulo(String nome, Disciplina t) {
-		try {
-			// CONECTA
-			con.conecta();
-			PreparedStatement preparaInstrucao;
-			preparaInstrucao = con.getConexao().prepareStatement(UPDATEDISCIPLINA);
-
-			// SETA OS VALORES DA INSTRUCAO
-			// OBS: PASSA OS PARAMETROS NA ORDEM DAS ? DA INSTRUCAO
-			preparaInstrucao.setString(1, t.getNomeDisciplina().toUpperCase());
-			preparaInstrucao.setString(2, t.getAssuntoDisciplina().toUpperCase());
+            ResultSet rs = preparaInstrucao.executeQuery(); 
 			
-			// EXECUTA A INSTRUCAO
-			preparaInstrucao.execute();
-
-			// DESCONECTA
-			con.desconecta();
-			
-			return true;
-
-		} catch (SQLException e) {
-			return false;
-
-		}
-	}
-	
-	public boolean deleteTitulo(Disciplina t) {
-		try {
-			// CONECTA
-			con.conecta();
-			PreparedStatement preparaInstrucao;
-			preparaInstrucao = con.getConexao().prepareStatement(DELETEDISCIPLINA);
-
-			// SETA OS VALORES DA INSTRUCAO
-			// OBS: PASSA OS PARAMETROS NA ORDEM DAS ? DA INSTRUCAO
-			preparaInstrucao.setString(1, t.getNomeDisciplina());
-
-			// EXECUTA A INSTRUCAO
-			preparaInstrucao.execute();
-
-			// DESCONECTA
-			con.desconecta();
-			
-			return true;
-
-		} catch (SQLException e) {
-			return false;
-
-		}
-	}
-	public ArrayList<Disciplina> buscarDisciplina(String nomeDisciplina) {
-		ArrayList<Disciplina> lista = new ArrayList<>(); 
-
-		try {
-			// CONECTA
-			con.conecta();
-			PreparedStatement preparaInstrucao;
-			preparaInstrucao = con.getConexao().prepareStatement(BUSCARDISCIPLINA); 
-			
-			//SETA OS VALORES DA INSTRUCAO
-			//OBS: PASSA OS PARAMETROS NA ORDEM DAS ? DA INSTRUCAO
-			preparaInstrucao.setString(1, "%"+nomeDisciplina.toUpperCase()+"%");
-			
-			// EXECUTA A INSTRUCAO
-			ResultSet rs = preparaInstrucao.executeQuery(); 
-			
-			//TRATA O RETORNO DA CONSULTA
-			while (rs.next()) { //enquanto houver registro
-				Disciplina u = new Disciplina(rs.getString("NOME_DISCIPLINA"));
-				lista.add(u); 
-			}
-			// DESCONECTA
-			con.desconecta();
-		} catch (SQLException e) {
-                     System.out.println(e.getMessage());
-		}
-		
-		return lista;
-	}
-	
+            while (rs.next()) { 
+                
+                Disciplina a = new Disciplina(
+                        rs.getString("NOME_DISCIPLINA"),
+                        rs.getString("CONTEUDO_DISCIPLINA"), 
+                        rs.getString("ANOTACOES_DISCIPLINA")
+                        );
+		lista.add(a);               
+            }           
+            con.desconecta();
+            
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+            return lista;
+     
+    }
 }
+
+ 
+

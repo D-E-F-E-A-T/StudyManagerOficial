@@ -26,13 +26,13 @@ import javafx.scene.layout.Pane;
 public class TelaPrincipalController implements Initializable {
     @FXML private BorderPane borderPrincipal;
     @FXML private Label labelPrincipal;
-    @FXML private JFXButton btCalendario;
+    //@FXML private JFXButton btCalendario;
     @FXML private JFXButton btDisciplinas;
     @FXML private JFXButton btTarefas;
-    @FXML private JFXButton btPlanoDeEstudos;
+    //@FXML private JFXButton btPlanoDeEstudos;
     @FXML private JFXButton btExames;
-    @FXML private JFXButton btPesquisar;
-    @FXML private JFXButton btConfiguracoes;
+    //@FXML private JFXButton btPesquisar;
+    //@FXML private JFXButton btConfiguracoes;
     @FXML private JFXButton btSair;
     @FXML private Pane paneInicial;
 
@@ -42,10 +42,10 @@ public class TelaPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-       
+       disciplinas();
     }
 
-    @FXML private void calendarios(){
+    /*@FXML private void calendarios(){
         System.out.println("teste");
         try {
             URL url = getClass().getResource("/visao/TelaCalendario.fxml");
@@ -56,7 +56,7 @@ public class TelaPrincipalController implements Initializable {
             ex.printStackTrace();
             //Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    } */
         
     @FXML private void disciplinas(){
         System.out.println("teste");
@@ -84,7 +84,7 @@ public class TelaPrincipalController implements Initializable {
         }
     }
     
-    @FXML private void planodeestudos(){
+    /* @FXML private void planodeestudos(){
         System.out.println("teste");
         try {
             URL url = getClass().getResource("/visao/TelaPlanosDeEstudos.fxml");
@@ -95,7 +95,7 @@ public class TelaPrincipalController implements Initializable {
             ex.printStackTrace();
             //Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    } */
     
     @FXML private void exames(){
         System.out.println("teste");
@@ -110,7 +110,7 @@ public class TelaPrincipalController implements Initializable {
         }
     }
     
-    @FXML private void pesquisar(){
+    /* @FXML private void pesquisar(){
         System.out.println("teste");
         try {
             URL url = getClass().getResource("/visao/TelaPesquisar.fxml");
@@ -121,9 +121,9 @@ public class TelaPrincipalController implements Initializable {
             ex.printStackTrace();
             //Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    } */
     
-    @FXML private void configuracoes(){
+    /* @FXML private void configuracoes(){
         System.out.println("teste");
         try {
             URL url = getClass().getResource("/visao/TelaConfiguracoes.fxml");
@@ -134,7 +134,7 @@ public class TelaPrincipalController implements Initializable {
             ex.printStackTrace();
             //Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    } */
     
     @FXML
 	private void sair() {

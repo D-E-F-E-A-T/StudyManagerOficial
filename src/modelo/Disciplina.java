@@ -1,57 +1,100 @@
 package modelo;
 
+import java.util.Objects;
+
 public class Disciplina {
-    private String nomeDisciplina;
-    private String assuntoDisciplina;
-    private String descricaoDisciplina;
-    private String anotacoesDisciplina;
+    private String nome;
+    private String conteudo;
+    private String anotacoes;
+    private String horario;
+    private int id_disciplina;
 
-    public Disciplina(String nomeDisciplina, String assuntoDisciplina, String descricaoDisciplina, String anotacoesDisciplina) {
-        this.nomeDisciplina = nomeDisciplina;
-        this.assuntoDisciplina = assuntoDisciplina;
-        this.descricaoDisciplina = descricaoDisciplina;
-        this.anotacoesDisciplina = anotacoesDisciplina;
+    public Disciplina(String nome, String conteudo, String anotacoes) {
+        this.nome = nome;
+        this.conteudo = conteudo;
+        this.anotacoes = anotacoes;    
     }
 
-    public Disciplina(String nomeDisciplina, String assuntoDisciplina) {
-        this.nomeDisciplina = nomeDisciplina;
-        this.assuntoDisciplina = assuntoDisciplina;
+    public Disciplina(String nome, String conteudo, String anotacoes, String horario, int id_disciplina) {
+        this.nome = nome;
+        this.conteudo = conteudo;
+        this.anotacoes = anotacoes;
+        this.horario = horario;
+        this.id_disciplina = id_disciplina;
     }
 
-    public Disciplina(String nomeDisciplina) {
-        this.nomeDisciplina = nomeDisciplina;
+    public int getId_disciplina() {
+        return id_disciplina;
+    }
+    
+    
+
+    public String getNome() {
+        return nome;
     }
 
-    public String getNomeDisciplina() {
-        return nomeDisciplina;
+    public String getConteudo() {
+        return conteudo;
     }
 
-    public void setNomeDisciplina(String nomeDisciplina) {
-        this.nomeDisciplina = nomeDisciplina;
+    public String getAnotacoes() {
+        return anotacoes;
     }
 
-    public String getAssuntoDisciplina() {
-        return assuntoDisciplina;
+    public String getHorario() {
+        return horario;
     }
 
-    public void setAssuntoDisciplina(String assuntoDisciplina) {
-        this.assuntoDisciplina = assuntoDisciplina;
+    public void setId_disciplina(int id_disciplina) {
+        this.id_disciplina = id_disciplina;
+    }
+    
+  
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getDescricaoDisciplina() {
-        return descricaoDisciplina;
+    public void setConteudo(String conteudo) {
+        this.conteudo = conteudo;
     }
 
-    public void setDescricaoDisciplina(String descricaoDisciplina) {
-        this.descricaoDisciplina = descricaoDisciplina;
+    public void setAnotacoes(String anotacoes) {
+        this.anotacoes = anotacoes;
     }
 
-    public String getAnotacoesDisciplina() {
-        return anotacoesDisciplina;
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 
-    public void setAnotacoesDisciplina(String anotacoesDisciplina) {
-        this.anotacoesDisciplina = anotacoesDisciplina;
+    @Override
+    public String toString() {
+        return "Disciplina{" + "nome=" + nome + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.nome);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Disciplina other = (Disciplina) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        return true;
+    }
+
     
 }

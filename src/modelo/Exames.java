@@ -1,116 +1,92 @@
 package modelo;
 
+import java.util.Date;
+import java.util.Objects;
+
 public class Exames {
-    private String disciplinaExame;
-    private String nomeExame;
-    private String anotacoesExame;
-    private String salaExame;
-    private String descricaoExame;
-    private int dateExame;
-    private int horaExame;
-    private int duracaoExame;
-    private int notasExame;
+    private String nome;
+    private String conteudo;
+    private double nota;
+    private String sala;
+    private Date data;
 
-    public Exames(String disciplinaExame, String nomeExame, String anotacoesExame, String salaExame, String descricaoExame, int dateExame, int horaExame, int duracaoExame, int notasExame, int mediaExame) {
-        this.disciplinaExame = disciplinaExame;
-        this.nomeExame = nomeExame;
-        this.anotacoesExame = anotacoesExame;
-        this.salaExame = salaExame;
-        this.descricaoExame = descricaoExame;
-        this.dateExame = dateExame;
-        this.horaExame = horaExame;
-        this.duracaoExame = duracaoExame;
-        this.notasExame = notasExame;
+    public Exames(String nome, String conteudo, double nota, String sala, Date data) {
+        this.nome = nome;
+        this.conteudo = conteudo;
+        this.nota = nota;
+        this.sala = sala;
+        this.data = data;
     }
 
-    public Exames(String disciplinaExame, String nomeExame, String anotacoesExame, String salaExame, int dateExame, int horaExame, int notasExame, int mediaExame) {
-        this.disciplinaExame = disciplinaExame;
-        this.nomeExame = nomeExame;
-        this.anotacoesExame = anotacoesExame;
-        this.salaExame = salaExame;
-        this.dateExame = dateExame;
-        this.horaExame = horaExame;
-        this.notasExame = notasExame;
+    public String getNome() {
+        return nome;
     }
 
-    public Exames(String disciplinaExame, String nomeExame, int notasExame, int mediaExame) {
-        this.disciplinaExame = disciplinaExame;
-        this.nomeExame = nomeExame;
-        this.notasExame = notasExame;
+    public String getConteudo() {
+        return conteudo;
     }
 
-    public String getDisciplinaExame() {
-        return disciplinaExame;
+    public double getNota() {
+        return nota;
     }
 
-    public void setDisciplinaExame(String disciplinaExame) {
-        this.disciplinaExame = disciplinaExame;
+    public String getSala() {
+        return sala;
     }
 
-    public String getNomeExame() {
-        return nomeExame;
+    public Date getData() {
+        return data;
     }
 
-    public void setNomeExame(String nomeExame) {
-        this.nomeExame = nomeExame;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getAnotacoesExame() {
-        return anotacoesExame;
+    public void setConteudo(String conteudo) {
+        this.conteudo = conteudo;
     }
 
-    public void setAnotacoesExame(String anotacoesExame) {
-        this.anotacoesExame = anotacoesExame;
+    public void setNota(double nota) {
+        this.nota = nota;
     }
 
-    public String getSalaExame() {
-        return salaExame;
+    public void setSala(String sala) {
+        this.sala = sala;
     }
 
-    public void setSalaExame(String salaExame) {
-        this.salaExame = salaExame;
+    public void setData(Date data) {
+        this.data = data;
     }
 
-    public String getDescricaoExame() {
-        return descricaoExame;
+    @Override
+    public String toString() {
+        return "Exames{" + "nome=" + nome + '}';
     }
 
-    public void setDescricaoExame(String descricaoExame) {
-        this.descricaoExame = descricaoExame;
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.nome);
+        return hash;
     }
 
-    public int getDateExame() {
-        return dateExame;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Exames other = (Exames) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        return true;
     }
-
-    public void setDateExame(int dateExame) {
-        this.dateExame = dateExame;
-    }
-
-    public int getHoraExame() {
-        return horaExame;
-    }
-
-    public void setHoraExame(int horaExame) {
-        this.horaExame = horaExame;
-    }
-
-    public int getDuracaoExame() {
-        return duracaoExame;
-    }
-
-    public void setDuracaoExame(int duracaoExame) {
-        this.duracaoExame = duracaoExame;
-    }
-
-    public int getNotasExame() {
-        return notasExame;
-    }
-
-    public void setNotasExame(int notasExame) {
-        this.notasExame = notasExame;
-    }
-
     
     
 }
