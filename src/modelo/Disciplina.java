@@ -3,11 +3,12 @@ package modelo;
 import java.util.Objects;
 
 public class Disciplina {
+    private int id_disciplina;
     private String nome;
     private String conteudo;
     private String anotacoes;
     private String horario;
-    private int id_disciplina;
+    
 
     public Disciplina(String nome, String conteudo, String anotacoes) {
         this.nome = nome;
@@ -15,13 +16,14 @@ public class Disciplina {
         this.anotacoes = anotacoes;    
     }
 
-    public Disciplina(String nome, String conteudo, String anotacoes, String horario, int id_disciplina) {
+    public Disciplina(int id_disciplina, String nome, String conteudo, String anotacoes) {
+        this.id_disciplina = id_disciplina;
         this.nome = nome;
         this.conteudo = conteudo;
         this.anotacoes = anotacoes;
-        this.horario = horario;
-        this.id_disciplina = id_disciplina;
     }
+    
+    
 
     public int getId_disciplina() {
         return id_disciplina;
@@ -68,8 +70,10 @@ public class Disciplina {
 
     @Override
     public String toString() {
-        return "Disciplina{" + "nome=" + nome + '}';
+        return "Disciplina: " +  nome;
     }
+
+   
 
     @Override
     public int hashCode() {

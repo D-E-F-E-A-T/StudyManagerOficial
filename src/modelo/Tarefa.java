@@ -1,22 +1,37 @@
 package modelo;
 
+
+
 import java.util.Date;
 import java.util.Objects;
 
 
 public class Tarefa {
+   private int id_tarefa;
    private String nome;
    private String assunto;
-   private Disciplina disciplina;
+   private int disciplina;
    private Date data;
 
-    public Tarefa(String nome, String assunto, Disciplina disciplina, Date data) {
+    public Tarefa(String nome, String assunto, int disciplina, Date  data) {
         this.nome = nome;
         this.assunto = assunto;
         this.disciplina = disciplina;
         this.data = data;
     }
 
+    public Tarefa(int id_tarefa, String nome, String assunto, int disciplina, Date  data) {
+        this.id_tarefa = id_tarefa;
+        this.nome = nome;
+        this.assunto = assunto;
+        this.disciplina = disciplina;
+        this.data = data;
+    }
+
+    public int getId_tarefa() {
+        return id_tarefa;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -25,14 +40,22 @@ public class Tarefa {
         return assunto;
     }
 
-    public Disciplina getDisciplina() {
+    public int getDisciplina() {
         return disciplina;
     }
 
-    public Date getData() {
+    /**
+     *
+     * @return
+     */
+    public Date  getData() {
         return data;
     }
 
+    public void setId_tarefa(int id_tarefa) {
+        this.id_tarefa = id_tarefa;
+    }
+    
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -41,7 +64,7 @@ public class Tarefa {
         this.assunto = assunto;
     }
 
-    public void setDisciplina(Disciplina disciplina) {
+    public void setDisciplina(int disciplina) {
         this.disciplina = disciplina;
     }
 
@@ -76,9 +99,9 @@ public class Tarefa {
 
     @Override
     public String toString() {
-        return "Tarefa{" + "nome=" + nome + '}';
+        return "Tarefa{" + "id_tarefa=" + id_tarefa + ", nome=" + nome + ", assunto=" + assunto + ", disciplina=" + disciplina + ", data=" + data + '}';
     }
-   
+
     
     
 }

@@ -4,40 +4,41 @@
  * and open the template in the editor.
  */
 package persistencia;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import modelo.Disciplina;
+import modelo.Tarefa;
 
 /**
  *
  * @author Ayrton Barreto
  */
-public class DisciplinaDAO {
+public class TarefaDAO {
     private Conexao con = new Conexao();
      
-    private final String INSERTDISCIPLINA = "INSERT INTO DISCIPLINA (NOME_DISCIPLINA,CONTEUDO_DISCIPLINA, ANOTACOES_DISCIPLINA) VALUES (?,?,?)";
-    private final String UPDATEDISCIPLINA = "UPDATE DISCIPLINA SET NOME_DISCIPLINA = ?, CONTEUDO_DISCIPLINA = ?, ANOTACOES_DISCIPLINA = ? WHERE ID_DISCIPLINA = ?";
-    private final String DELETEDISCIPLINA = "DELETE FROM DISCIPLINA WHERE ID_DISCIPLINA = ?";
-    private final String LISTDISCIPLINA = "SELECT * FROM DISCIPLINA ORDER BY ID_DISCIPLINA";
+    private final String INSERTTAREFA= "INSERT INTO TAREFA (NOME_TAREFA,ASSUNTO_TAREFA,DISCIPLINA_TAREFA, DATA_TAREFA) VALUES (?,?,?,?)";
+    private final String UPDATETAREFA = "UPDATE TAREFA SET NOME_TAREFA = ?, ASSUNTO_TAREFA = ?, DISCIPLINA_TAREFA = ?, DATA_TAREFA = ? WHERE ID_TAREFA = ?";
+    private final String DELETETAREFA= "DELETE FROM TAREFA WHERE ID_TAREFA = ?";
+    private final String LISTTAREFA = "SELECT * FROM TAREFA ORDER BY ID_TAREFA";
    
     
-    public boolean insertDisciplina(Disciplina d) throws SQLException{
+    public boolean insertTarefa(Tarefa t) throws SQLException{
         System.out.println("ESTOU ACESSANDO O BANCO");
         con.conecta();
         
         try{
-            
-         
+           
         PreparedStatement preparaInstrucao;
-        preparaInstrucao = con.getConexao().prepareStatement(INSERTDISCIPLINA);
+        preparaInstrucao = con.getConexao().prepareStatement(INSERTTAREFA);
         System.out.println("ESTOU AQUI DEPOIS DA CONEXAO");
       
         System.out.println("ESTOU ACESSANDO AS CLASSES");
-        preparaInstrucao.setString(1, d.getNome().toUpperCase());
-        preparaInstrucao.setString(2, d.getConteudo().toUpperCase());
-        preparaInstrucao.setString(3, d.getAnotacoes().toUpperCase());
+        preparaInstrucao.setString(1, t.getNome().toUpperCase());
+        preparaInstrucao.setString(2, t.getAssunto().toUpperCase());
+        preparaInstrucao.setInt(3, t.getDisciplina());
+        preparaInstrucao.setDate(4, new java.sql.Date(t.getData().getTime()));
         System.out.println("ESTOU ACESSEI AS CLASSES");
         preparaInstrucao.execute();
         con.desconecta();
@@ -51,17 +52,17 @@ public class DisciplinaDAO {
         }
     }
     
-     public boolean upadateDisciplina(Disciplina d) throws SQLException{
+     public boolean upadateTarefa(Tarefa t) throws SQLException{
         con.conecta();
-        
 
         try{
             PreparedStatement preparaInstrucao;
-            preparaInstrucao = con.getConexao().prepareStatement(UPDATEDISCIPLINA);
-            preparaInstrucao.setString(1, d.getNome().toUpperCase());
-            preparaInstrucao.setString(2, d.getConteudo().toUpperCase());
-            preparaInstrucao.setString(3, d.getAnotacoes().toUpperCase());
-            preparaInstrucao.setInt(4, d.getId_disciplina());
+            preparaInstrucao = con.getConexao().prepareStatement(UPDATETAREFA);
+            preparaInstrucao.setString(1, t.getNome().toUpperCase());
+            preparaInstrucao.setString(2, t.getAssunto().toUpperCase());
+            preparaInstrucao.setInt(3, t.getDisciplina());
+            preparaInstrucao.setDate(4, (Date) t.getData());
+            preparaInstrucao.setInt(5, t.getId_tarefa());
 
             preparaInstrucao.execute();
             con.desconecta();
@@ -73,14 +74,14 @@ public class DisciplinaDAO {
         }
     }
      
-     public boolean deleteDisciplina(int id) throws SQLException{
+     public boolean deleteTarefa(int id) throws SQLException{
         
          con.conecta();
          System.out.println("Estou conectado no banco para deletar");
         try{
             
             PreparedStatement preparaInstrucao;
-            preparaInstrucao = con.getConexao().prepareStatement(DELETEDISCIPLINA);
+            preparaInstrucao = con.getConexao().prepareStatement(DELETETAREFA);
             System.out.println("fiz conexao com o delete");
             preparaInstrucao.setInt(1, id);
             preparaInstrucao.execute();
@@ -93,27 +94,28 @@ public class DisciplinaDAO {
         } 
     }
     
-    public ArrayList<Disciplina> listDisciplina(){
+    public ArrayList<Tarefa> listTarefa(){
       
-      ArrayList<Disciplina> lista = new ArrayList<>(); 
+      ArrayList<Tarefa> lista = new ArrayList<>(); 
 
 	try {
 			
             con.conecta();
             PreparedStatement preparaInstrucao;
-            preparaInstrucao = con.getConexao().prepareStatement(LISTDISCIPLINA); 
+            preparaInstrucao = con.getConexao().prepareStatement(LISTTAREFA); 
 			
             ResultSet rs = preparaInstrucao.executeQuery(); 
 			
             while (rs.next()) { 
                 
-                Disciplina a = new Disciplina(
-                        rs.getInt("ID_DISCIPLINA"),
-                        rs.getString("NOME_DISCIPLINA"),
-                        rs.getString("CONTEUDO_DISCIPLINA"), 
-                        rs.getString("ANOTACOES_DISCIPLINA")
+                Tarefa t = new Tarefa(
+                        rs.getInt("ID_TAREFA"),
+                        rs.getString("NOME_TAREFA"),
+                        rs.getString("ASSUNTO_TAREFA"), 
+                        rs.getInt("DISCIPLINA_TAREFA"),
+                        rs.getDate("DATA_TAREFA")
                         );
-		lista.add(a);               
+		lista.add(t);               
             }           
             con.desconecta();
             
@@ -123,6 +125,7 @@ public class DisciplinaDAO {
             return lista;
      
     }
+
 }
 
  

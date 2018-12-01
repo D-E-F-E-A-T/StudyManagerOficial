@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -20,35 +20,31 @@
       </ImageView>
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="600.0" spacing="50.0">
          <children>
-            <JFXTextField fx:id="disciplinaTarefa" prefHeight="25.0" prefWidth="203.0" promptText="Disciplina:" />
-            <JFXTextField fx:id="tipoTarefa" prefHeight="25.0" prefWidth="203.0" promptText="Tipo de Tarefa:" />
+            <JFXTextField fx:id="nomeTarefa" prefHeight="25.0" prefWidth="203.0" promptText="Nome:" />
+            <JFXTextField fx:id="assuntoTarefa" prefHeight="25.0" prefWidth="203.0" promptText="Assunto:" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="54.0" prefWidth="600.0" spacing="50.0">
          <children>
-            <JFXTextField fx:id="assuntoTarefa" prefHeight="25.0" prefWidth="203.0" promptText="Assunto:" />
+            <JFXComboBox fx:id="disciplinaTarefa" prefHeight="25.0" prefWidth="209.0" promptText="Disciplina:" />
             <JFXDatePicker fx:id="dataTarefa" prefHeight="25.0" prefWidth="203.0" promptText="Data de Entrega:" />
          </children>
       </HBox>
-      <HBox prefHeight="49.0" prefWidth="600.0">
-         <children>
-            <JFXTextArea fx:id="anotacoesTarefa" prefHeight="40.0" prefWidth="600.0" promptText="Anotações:" />
-         </children>
-      </HBox>
+      <HBox prefHeight="49.0" prefWidth="600.0" />
       <HBox alignment="CENTER" prefHeight="42.0" prefWidth="600.0" spacing="50.0">
          <children>
-            <JFXButton fx:id="btcadastrarTarefa" style="-fx-background-color: green;" text="CADASTRAR" textFill="WHITE" />
-            <JFXButton fx:id="btEditarTarefa" style="-fx-background-color: blue;" text="EDITAR" textFill="WHITE" />
-            <JFXButton fx:id="btExcluirTarefa" style="-fx-background-color: red;" text="EXCLUIR" textFill="WHITE" />
+            <JFXButton fx:id="btcadastrarTarefa" onAction="#addTarefa" style="-fx-background-color: green;" text="CADASTRAR" textFill="WHITE" />
+            <JFXButton fx:id="btEditarTarefa" onAction="#updateTarefa" style="-fx-background-color: blue;" text="EDITAR" textFill="WHITE" />
+            <JFXButton fx:id="btExcluirTarefa" onAction="#deleteTarefa" style="-fx-background-color: red;" text="EXCLUIR" textFill="WHITE" />
          </children>
       </HBox>
-      <TableView prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tabelaTarefas" onMouseClicked="#mouseClicked" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn fx:id="disciplina" prefWidth="110.0" text="Disciplina" />
-          <TableColumn fx:id="tipo" prefWidth="74.0" text="Tipo" />
-            <TableColumn fx:id="assunto" prefWidth="86.0" text="Assunto" />
-            <TableColumn fx:id="data" prefWidth="103.0" text="Data de Entrega" />
-            <TableColumn fx:id="anotacoes" minWidth="9.0" prefWidth="226.0" text="Anotações" />
+            <TableColumn fx:id="idTarefa" prefWidth="60.0" text="id_tarefa" />
+          <TableColumn fx:id="disciplina" minWidth="0.0" prefWidth="167.0" text="tarefa" />
+            <TableColumn fx:id="idTarefa1" prefWidth="153.0" text="Assunto" />
+            <TableColumn fx:id="assunto" prefWidth="82.0" text="disciplina" />
+            <TableColumn fx:id="data" prefWidth="139.0" text="Data de Entrega" />
         </columns>
       </TableView>
    </children>

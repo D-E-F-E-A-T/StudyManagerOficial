@@ -20,6 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import modelo.Disciplina;
 import persistencia.DisciplinaDAO;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -27,10 +28,11 @@ import persistencia.DisciplinaDAO;
  * @author Ayrton Barreto
  */
 public class TelaDisciplinasController implements Initializable {
+
     private Disciplina disciplinaEdit;
     private DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
     private ObservableList<Disciplina> disciplina;
-    
+
     @FXML
     private JFXTextField TextDisciplinaDisciplina;
     @FXML
@@ -44,7 +46,7 @@ public class TelaDisciplinasController implements Initializable {
     @FXML
     private JFXButton btExcluir;
     @FXML
-    private TableView<Disciplina> TabelaDisciplina;
+    private TableView<Disciplina> tabelaDisciplina;
     @FXML
     private TableColumn<?, ?> idDisciplina;
     @FXML
@@ -55,11 +57,10 @@ public class TelaDisciplinasController implements Initializable {
     private TableColumn<?, ?> horarioDisciplina;
     @FXML
     private TableColumn<?, ?> anotacaoesDisciplina;
-    
-
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -67,81 +68,92 @@ public class TelaDisciplinasController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         listarDisciplina();
-    }   
-    
-     private void limparTextField(){
-        
+    }
+
+    private void limparTextField() {
+
         TextDisciplinaDisciplina.clear();
         TextConteudoDisciplina.clear();
         TextAnotacoesDisciplina.clear();
-       
+
     }
-     
-    
+
     @FXML
-    private void refreshTable(){
-        
-        
+    private void refreshTable() {
+        disciplina.clear();
+        disciplina.addAll(disciplinaDAO.listDisciplina());
+        tabelaDisciplina.setItems(disciplina);
     }
-    
+
     @FXML
-    private void addDisciplina() throws SQLException{
+    private void addDisciplina() throws SQLException {
         System.out.println("Metodo add");
-        if(!"".equals(nomeDisciplina.getText())){
-            
+        if (!"".equals(nomeDisciplina.getText())) {
+
         }
         System.out.println(nomeDisciplina.getText());
-        disciplinaEdit = new Disciplina(TextDisciplinaDisciplina.getText(),TextConteudoDisciplina.getText(),TextAnotacoesDisciplina.getText());
+        disciplinaEdit = new Disciplina(TextDisciplinaDisciplina.getText(), TextConteudoDisciplina.getText(), TextAnotacoesDisciplina.getText());
         //Fazer tratamentos aqui, Pedir explicação a Laura
         disciplinaDAO.insertDisciplina(disciplinaEdit);
-        disciplina.add(disciplinaEdit);
         refreshTable();
         limparTextField();
     }
+
     @FXML
-    private void updateDisciplina() throws SQLException{
-        
-        Disciplina disciplina = TabelaDisciplina.getSelectionModel().getSelectedItem();
-        
-        if(disciplina != null){
-            
-            if(!nomeDisciplina.getText().equals("")){
-                disciplina.setNome(nomeDisciplina.getText());
+    private void mouseClicked(MouseEvent event) {
+        Disciplina dis = tabelaDisciplina.getSelectionModel().getSelectedItem();
+        TextDisciplinaDisciplina.setText(dis.getNome());
+        TextConteudoDisciplina.setText(dis.getConteudo());
+        TextAnotacoesDisciplina.setText(dis.getAnotacoes());
+
+    }
+
+    @FXML
+    private void updateDisciplina() throws SQLException {
+
+        Disciplina dis = tabelaDisciplina.getSelectionModel().getSelectedItem();
+
+        if (dis != null) {
+
+            if (!TextDisciplinaDisciplina.getText().equals("")) {
+                dis.setNome(TextDisciplinaDisciplina.getText());
             }
-            if(!conteudoDisciplina.getText().equals("")){
-                disciplina.setConteudo(conteudoDisciplina.getText());
+            if (!TextConteudoDisciplina.getText().equals("")) {
+                dis.setConteudo(TextConteudoDisciplina.getText());
             }
-            if(!anotacaoesDisciplina.getText().equals("")){
-                disciplina.setAnotacoes(anotacaoesDisciplina.getText());
+            if (!TextAnotacoesDisciplina.getText().equals("")) {
+                dis.setAnotacoes(TextAnotacoesDisciplina.getText());
             }
-            disciplinaDAO.upadateDisciplina(disciplina);
-            
+            disciplinaDAO.upadateDisciplina(dis);
+
         }
-        
+
         refreshTable();
         limparTextField();
-        
-}
-     @FXML
-    private void deleteDisciplina() throws SQLException{
-        
-        disciplinaDAO.deleteDisciplina(TabelaDisciplina.getSelectionModel().getSelectedItem().getId_disciplina());
-        refreshTable();
-}
+
+    }
 
     @FXML
-    private void listarDisciplina(){
-        
+    private void deleteDisciplina() throws SQLException {
+        System.out.println("recebi mensagem para deletar");
+        disciplinaDAO.deleteDisciplina(tabelaDisciplina.getSelectionModel().getSelectedItem().getId_disciplina());
+        System.out.println(tabelaDisciplina.getSelectionModel().getSelectedItem().toString());
+        refreshTable();
+        System.out.println("DELETEI");
+    }
+
+    @FXML
+    private void listarDisciplina() {
+
         disciplina = FXCollections.observableArrayList(disciplinaDAO.listDisciplina());
-                
-        
+
         //TabelaDisciplina.getColumns().get(0).setCellValueFactory(new  PropertyValueFactory<>("id_disciplina"));
-        TabelaDisciplina.getColumns().get(0).setCellValueFactory(new  PropertyValueFactory<>("nome"));
-        TabelaDisciplina.getColumns().get(1).setCellValueFactory(new  PropertyValueFactory<>("conteudo"));
-        TabelaDisciplina.getColumns().get(2).setCellValueFactory(new  PropertyValueFactory<>("anotacoes"));
-       
-         TabelaDisciplina.setItems(disciplina);
-}
+        tabelaDisciplina.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id_disciplina"));
+        tabelaDisciplina.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("nome"));
+        tabelaDisciplina.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("conteudo"));
+        tabelaDisciplina.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("anotacoes"));
+
+        tabelaDisciplina.setItems(disciplina);
+    }
 
 }
-
