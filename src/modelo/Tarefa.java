@@ -9,13 +9,13 @@ import java.util.Objects;
 public class Tarefa {
    private int id_tarefa;
    private String nome;
-   private String assunto;
+   private String conteudo;
    private int disciplina;
    private Date data;
 
     public Tarefa(String nome, String assunto, int disciplina, Date  data) {
         this.nome = nome;
-        this.assunto = assunto;
+        this.conteudo = assunto;
         this.disciplina = disciplina;
         this.data = data;
     }
@@ -23,7 +23,7 @@ public class Tarefa {
     public Tarefa(int id_tarefa, String nome, String assunto, int disciplina, Date  data) {
         this.id_tarefa = id_tarefa;
         this.nome = nome;
-        this.assunto = assunto;
+        this.conteudo = assunto;
         this.disciplina = disciplina;
         this.data = data;
     }
@@ -37,7 +37,7 @@ public class Tarefa {
     }
 
     public String getAssunto() {
-        return assunto;
+        return conteudo;
     }
 
     public int getDisciplina() {
@@ -61,7 +61,7 @@ public class Tarefa {
     }
 
     public void setAssunto(String assunto) {
-        this.assunto = assunto;
+        this.conteudo = assunto;
     }
 
     public void setDisciplina(int disciplina) {
@@ -99,7 +99,7 @@ public class Tarefa {
 
     @Override
     public String toString() {
-        return "Tarefa{" + "id_tarefa=" + id_tarefa + ", nome=" + nome + ", assunto=" + assunto + ", disciplina=" + disciplina + ", data=" + data + '}';
+        return "Tarefa{" + "id_tarefa=" + id_tarefa + ", nome=" + nome + ", assunto=" + conteudo + ", disciplina=" + disciplina + ", data=" + data + '}';
     }
 
     

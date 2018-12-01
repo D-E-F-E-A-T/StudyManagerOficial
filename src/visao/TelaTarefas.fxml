@@ -40,8 +40,8 @@
       </HBox>
       <TableView fx:id="tabelaTarefas" onMouseClicked="#mouseClicked" prefHeight="200.0" prefWidth="200.0">
         <columns>
-            <TableColumn fx:id="idTarefa" prefWidth="60.0" text="id_tarefa" />
-          <TableColumn fx:id="disciplina" minWidth="0.0" prefWidth="167.0" text="tarefa" />
+            <TableColumn fx:id="idTarefa" prefWidth="34.0" text="ID" />
+          <TableColumn fx:id="disciplina" minWidth="0.0" prefWidth="193.0" text="tarefa" />
             <TableColumn fx:id="idTarefa1" prefWidth="153.0" text="Assunto" />
             <TableColumn fx:id="assunto" prefWidth="82.0" text="disciplina" />
             <TableColumn fx:id="data" prefWidth="139.0" text="Data de Entrega" />

@@ -26,13 +26,13 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="32.0" prefWidth="600.0" spacing="50.0">
          <children>
-            <JFXDatePicker fx:id="dataExame" prefHeight="25.0" prefWidth="203.0" />
             <JFXTextField fx:id="notaExame" prefHeight="25.0" prefWidth="203.0" text="Nota:" />
+            <JFXTextField fx:id="salaExame" prefHeight="25.0" prefWidth="203.0" text="Sala: " />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="42.0" prefWidth="600.0" spacing="50.0">
          <children>
-            <JFXTextField fx:id="salaExame" prefHeight="25.0" prefWidth="203.0" text="Sala: " />
+            <JFXDatePicker fx:id="dataExame" prefHeight="25.0" prefWidth="203.0" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="52.0" prefWidth="600.0">
@@ -42,19 +42,20 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="33.0" prefWidth="600.0" spacing="50.0">
          <children>
-            <JFXButton fx:id="btcadastrarExame" style="-fx-background-color: green;" text="CADASTRAR" textFill="WHITE" />
-            <JFXButton fx:id="bteditarExame" style="-fx-background-color: blue;" text="EDITAR" textFill="WHITE" />
-            <JFXButton fx:id="btexcluirExame" style="-fx-background-color: red;" text="EXCLUIR" textFill="WHITE" />
+            <JFXButton fx:id="btcadastrarExame" onAction="#addExame" style="-fx-background-color: green;" text="CADASTRAR" textFill="WHITE" />
+            <JFXButton fx:id="bteditarExame" onAction="#updateExame" style="-fx-background-color: blue;" text="EDITAR" textFill="WHITE" />
+            <JFXButton fx:id="btexcluirExame" onAction="#deleteExame" style="-fx-background-color: red;" text="EXCLUIR" textFill="WHITE" />
          </children>
       </HBox>
-      <TableView prefHeight="153.0" prefWidth="600.0">
+      <TableView fx:id="tabelaExame" onMouseClicked="#mouseClicked" prefHeight="244.0" prefWidth="602.0">
         <columns>
-          <TableColumn fx:id="tarefa" prefWidth="127.0" text="Tarefa" />
-          <TableColumn fx:id="conteudo" prefWidth="82.0" text="Contéudo" />
-            <TableColumn fx:id="data" minWidth="4.0" prefWidth="58.0" text="Data" />
-            <TableColumn fx:id="nota" prefWidth="42.0" text="Nota" />
-            <TableColumn fx:id="sala" prefWidth="69.0" text="Sala" />
-            <TableColumn fx:id="anotacoes" prefWidth="223.0" text="Anotações" />
+            <TableColumn fx:id="idExame" prefWidth="29.0" text="id" />
+          <TableColumn fx:id="tarefa" prefWidth="138.0" text="Tarefa" />
+          <TableColumn fx:id="conteudo" prefWidth="100.0" text="Contéudo" />
+            <TableColumn fx:id="nota" prefWidth="49.0" text="Nota" />
+            <TableColumn fx:id="sala" prefWidth="87.0" text="Sala" />
+            <TableColumn fx:id="data" minWidth="4.0" prefWidth="79.0" text="Data" />
+            <TableColumn fx:id="anotacoes" prefWidth="119.0" text="Anotações" />
         </columns>
       </TableView>
    </children>

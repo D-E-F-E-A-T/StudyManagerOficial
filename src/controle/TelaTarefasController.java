@@ -99,17 +99,22 @@ public class TelaTarefasController implements Initializable {
         nomeTarefa.setText(tis.getNome());
         assuntoTarefa.setText(tis.getAssunto());
         
-          Instant instant = Instant.ofEpochMilli(tis.getData().getTime());
-          LocalDate localDate = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
-          dataTarefa.setValue(localDate);
-        
-        Disciplina dis = null;
+          
+         Disciplina dis = null;
         for(Disciplina d: disciplina){
             if(d.getId_disciplina() == tis.getDisciplina())
                 dis = d;
         }
        
         disciplinaTarefa.setValue(dis);
+        
+       
+        
+        Instant instant = Instant.ofEpochMilli(tis.getData().getTime());
+        LocalDate localDate = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
+        dataTarefa.setValue(localDate);
+        
+       
         
     }
      
@@ -150,12 +155,12 @@ public class TelaTarefasController implements Initializable {
     
      @FXML
     private void addTarefa() throws SQLException{
-         Date dataTarefa = Date.valueOf(this.dataTarefa.getValue());
+         Date dataTarefas = Date.valueOf(this.dataTarefa.getValue());
         tarefaEDIT = new Tarefa(
                 nomeTarefa.getText(),
                 assuntoTarefa.getText(),
                 disciplinaTarefa.getSelectionModel().getSelectedItem().getId_disciplina(),
-                dataTarefa);
+                dataTarefas);
         
         tarefaDAO.insertTarefa(tarefaEDIT);
         limparTextField();
@@ -176,21 +181,22 @@ public class TelaTarefasController implements Initializable {
         Tarefa t = tabelaTarefas.getSelectionModel().getSelectedItem();
            
             if(t != null){
-                System.out.println("vou editar");
+             System.out.println("vou editar");
             if(!nomeTarefa.getText().equals("")){
                 t.setNome(nomeTarefa.getText());
             }
+             System.out.println(t);
             if(!assuntoTarefa.getText().equals("")){
                 t.setAssunto(assuntoTarefa.getText());
             }
-            
-            t.setId_tarefa(disciplinaTarefa.getSelectionModel().getSelectedItem().getId_disciplina());
-            
+             System.out.println(t);
+            t.setDisciplina(disciplinaTarefa.getSelectionModel().getSelectedItem().getId_disciplina());
+             System.out.println(t);
             if(!dataTarefa.getValue().equals("")){
                 t.setData(Date.valueOf(dataTarefa.getValue()));
             }
             
-            
+            System.out.println(t);
             tarefaDAO.upadateTarefa(t);
             System.out.println("editei");
             

@@ -53,18 +53,21 @@ public class TarefaDAO {
     }
     
      public boolean upadateTarefa(Tarefa t) throws SQLException{
-        con.conecta();
-
+     
         try{
+            System.out.println("conexao para editar");
+            con.conecta();
             PreparedStatement preparaInstrucao;
             preparaInstrucao = con.getConexao().prepareStatement(UPDATETAREFA);
+            
             preparaInstrucao.setString(1, t.getNome().toUpperCase());
             preparaInstrucao.setString(2, t.getAssunto().toUpperCase());
             preparaInstrucao.setInt(3, t.getDisciplina());
             preparaInstrucao.setDate(4, (Date) t.getData());
             preparaInstrucao.setInt(5, t.getId_tarefa());
-
+            System.out.println("conectei e editei");
             preparaInstrucao.execute();
+            System.out.println("enviei para o banco");
             con.desconecta();
 
         return true;    
